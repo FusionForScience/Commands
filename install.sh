@@ -7,9 +7,7 @@
 
 
 # check to see if we have overwrite-check.sh script
-checkTemp="$(ls | grep "overwrite-check.sh" )"
-
-if [ "$checkTemp" != "overwrite-check.sh" ]
+if [ -f "overwrite-check.sh" ]
 then
     echo "Error: overwrite-check.sh not found" >&2
     exit
@@ -69,3 +67,6 @@ do
 
     i=$(echo $i + 1 | bc)
 done
+
+# export to path
+echo "export PATH=$PATH:"$installPath"" > ~/.bashrc
